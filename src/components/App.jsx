@@ -1,7 +1,10 @@
+import Header from "./Header/Header";
+
 export const App = () => {
   return (
+
     <div>
-      React homework template
+      <Header />
     </div>
   );
 };
@@ -9,5 +12,3 @@ export const App = () => {
 
 
 
-
-//535714c0a80e6a8943da768c0c2085c9
