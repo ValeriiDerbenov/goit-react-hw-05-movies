@@ -1,7 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const MovieDetailsPage = () => {
-	const [movieDetails, setMovieDetails] = useState({});
+	// const [movieDetails, setMovieDetails] = useState({});
 
 	return (
 		<div>
