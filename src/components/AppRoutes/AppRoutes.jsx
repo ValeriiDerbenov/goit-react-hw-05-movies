@@ -6,14 +6,11 @@ import NotFoundPage from "pages/NotFoundPage/NotFoundPage/NotFoundPage";
 import MovieDetailsPage from "pages/MovieDetailsPage/MovieDetailsPage";
 import Cast from "./Cast/Cast";
 import Reviews from "./Reviews/Reviews";
-// import AppRoutes from "./AppRoutes/AppRoutes";
 
-
-export const App = () => {
-  return (
-
-    <div>
-      <Header />
+export const AppRoutes = () => {
+	return (
+		<>
+			 <Header />
       <Routes>
         <Route path='/' element={<TrendingPage />}></Route>
         <Route path='/movies' element={<MoviesSearchPage />}></Route>
@@ -23,10 +20,8 @@ export const App = () => {
         </Route>
         <Route path='/*' element={<NotFoundPage />}></Route>
       </Routes> 
-    </div>
-  );
-};
+		</>
+	)
+}
 
-
-
-
+// export default AppRoutes;
