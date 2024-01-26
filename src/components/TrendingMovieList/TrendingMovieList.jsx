@@ -4,15 +4,15 @@ const TrendingMovieList = ({movies}) => {
 
 	return (
 		<ul>
-			{movies.map(movie => (
-				<li key={movie.id}>
+			{movies.map(({ id, title }) => (
+				<li key={id}>
 					<Link
             to={{
-              pathname: `/movies/${movie.id}`,
+              pathname: `/movies/${id}`,
               // state: { from: setlocation },
             }}
           >
-            {movie.title}
+            {title}
           </Link>
 				</li>
 			))
