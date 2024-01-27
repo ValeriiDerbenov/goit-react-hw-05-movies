@@ -18,11 +18,11 @@ export const App = () => {
         <Route path='/' element={<TrendingPage />}></Route>
         <Route path='/movies' element={<MoviesSearchPage />}></Route>
         <Route path='/movies/:id' element={<MovieDetailsPage />}>
-          {/* <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} /> */}
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="/movies/:id/cast" element={<Cast />} />
-        <Route path="/movies/:id/reviews" element={<Reviews />} />
+        {/* <Route path="/movies/:id/cast" element={<Cast />} />
+        <Route path="/movies/:id/reviews" element={<Reviews />} /> */}
         <Route path='/*' element={<NotFoundPage />}></Route>
       </Routes> 
     </div>

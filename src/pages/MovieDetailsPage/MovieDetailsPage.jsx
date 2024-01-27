@@ -1,6 +1,6 @@
 import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
  
 const MovieDetailsPage = () => {
@@ -79,6 +79,7 @@ const MovieDetailsPage = () => {
 				<li>
 					<Link to="reviews">Reviews</Link>
 				</li>
+				<Outlet />
 			 </ul>
 		</div>
 	)
