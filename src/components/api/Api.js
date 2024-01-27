@@ -47,3 +47,11 @@ export const fetchMovieCast = async id => {
   );
   return response.data.cast;
 };
+
+export const fetchReviews = async id => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/reviews`,
+    { params: { api_key: API_KEY } }
+  );
+  return response.data.results;
+};

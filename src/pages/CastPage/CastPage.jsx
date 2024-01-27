@@ -5,22 +5,32 @@ import { useParams } from 'react-router-dom';
 const Cast = () => {
 
 	const [cast, setCast] = useState([]);
+	const [loading, setLoading] = useState([]);
+	const [error, setError] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     const getMovieCast = async () => {
       try {
+				setLoading(true);
         setCast(await fetchMovieCast(id));
       } catch (error) {
-        console.log(error);
-      }
+        setError(error.message);
+      } finally {
+				setLoading(false);
+			}
     };
     getMovieCast();
   }, [id]);
 
+	const isCast = Boolean(cast.length);
+	console.log('isCast :>> ', isCast);
+
 	return (
 		
 		<>
+		{loading && <p>...Loading</p>}
+		{error && <p>{error}</p>}
 		<h2>Cast</h2>
 		<ul>
 			{cast.map(actor => (
