@@ -2,7 +2,7 @@ import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
-
+ 
 const MovieDetailsPage = () => {
 	const {id} = useParams();
 	// console.log(id)
@@ -74,16 +74,10 @@ const MovieDetailsPage = () => {
 			 <h3>Additional information</h3>
 			 <ul>
 				<li>
-					<Link to=
-					{
-						{pathname: `/movies/${id}/cast`}
-				
-					}
-					// {"cast"}
-					>Cast</Link>
+					<Link to="cast">Cast</Link>
 				</li>
 				<li>
-					<Link to={"reviews"}>Reviews</Link>
+					<Link to="reviews">Reviews</Link>
 				</li>
 			 </ul>
 		</div>

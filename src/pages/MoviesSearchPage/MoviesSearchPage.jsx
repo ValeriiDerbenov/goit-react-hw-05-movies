@@ -1,7 +1,6 @@
 // import { ContactList } from "components/ContactList/ContactList";
 import { SearchBox } from "components/SearchBox/SearchBox";
 import React from 'react';
-
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import TrendingMovieList from "components/TrendingMovieList/TrendingMovieList";
@@ -12,6 +11,7 @@ const MoviesSearchPage = () => {
 		const [searchParams, setSearchParams] = useSearchParams();
 		const movieName = searchParams.get('movie') ?? '';
 		const [movies, setMovies] = useState([]);
+		console.log('movieName :>> ', movieName);
 	
 		useEffect(() => {
 			const getMovies = async () => {
@@ -27,6 +27,7 @@ const MoviesSearchPage = () => {
 		const handleSubmit = e => {
 			e.preventDefault();
 			const searchQuery = e.currentTarget.elements.input.value;
+			console.log('searchQuery :>> ', searchQuery);
 			setSearchParams({ movie: searchQuery });
 			e.target.reset();
 		};
@@ -37,7 +38,7 @@ const MoviesSearchPage = () => {
 			<SearchBox onSubmit={handleSubmit} />
 			<TrendingMovieList movies={movies} />
 		</div>
-	)
-}
+		)
+	}
 
 export default MoviesSearchPage;
