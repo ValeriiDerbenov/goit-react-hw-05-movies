@@ -1,6 +1,6 @@
 import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
 
 const MovieDetailsPage = () => {
@@ -10,6 +10,8 @@ const MovieDetailsPage = () => {
 	// const [genres, setGenres] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const getMovieDetails = async () => {
@@ -41,6 +43,7 @@ const MovieDetailsPage = () => {
 		<div>
 			{loading && <p>{FadeLoader}</p>}
 			{/* {loading && <p>...Loading</p>} */}
+			<button onClick={() => navigate(-1)} type="button">Go back</button>
 			<div>
           <img
             src={
@@ -71,10 +74,16 @@ const MovieDetailsPage = () => {
 			 <h3>Additional information</h3>
 			 <ul>
 				<li>
-					<Link to="cast">Cast</Link>
+					<Link to=
+					{
+						{pathname: `/movies/${id}/cast`}
+				
+					}
+					// {"cast"}
+					>Cast</Link>
 				</li>
 				<li>
-					<Link to="reviews">Reviews</Link>
+					<Link to={"reviews"}>Reviews</Link>
 				</li>
 			 </ul>
 		</div>
