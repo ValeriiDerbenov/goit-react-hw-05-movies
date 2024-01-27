@@ -1,7 +1,7 @@
 import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
-import { FadeLoader } from "react-spinners";
+// import { FadeLoader } from "react-spinners";
  
 const MovieDetailsPage = () => {
 	const {id} = useParams();
@@ -24,7 +24,6 @@ const MovieDetailsPage = () => {
 				console.log(movieDetails.genres)
 			}
 			catch (error) {
-				// console.log(error);
 				setError(error);
 			}
 			finally {
@@ -41,8 +40,8 @@ const MovieDetailsPage = () => {
 		// const {title, poster_path, genres} = movieDetails;
 
 		<div>
-			{loading && <p>{FadeLoader}</p>}
-			{/* {loading && <p>...Loading</p>} */}
+			{loading && <p>...Loading</p>}
+			{error && <p>{error}</p>}
 			<button onClick={() => navigate(-1)} type="button">Go back</button>
 			<div>
           <img

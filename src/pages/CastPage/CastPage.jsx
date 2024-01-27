@@ -23,8 +23,8 @@ const Cast = () => {
     getMovieCast();
   }, [id]);
 
-	const isCast = Boolean(cast.length);
-	console.log('isCast :>> ', isCast);
+	// const isCast = Boolean(cast.length);
+	// console.log('isCast :>> ', isCast);
 
 	return (
 		

@@ -11,14 +11,19 @@ const MoviesSearchPage = () => {
 		const [searchParams, setSearchParams] = useSearchParams();
 		const movieName = searchParams.get('movie') ?? '';
 		const [movies, setMovies] = useState([]);
-		console.log('movieName :>> ', movieName);
+		const [loading, setLoading] = useState([]);
+		const [error, setError] = useState([]);
+		// console.log('movieName :>> ', movieName);
 	
 		useEffect(() => {
 			const getMovies = async () => {
 				try {
+					setLoading(true);
 					setMovies(await fetchSearchMovies(movieName));
 				} catch (error) {
-					console.log(error);
+					setError(error.message);
+				} finally {
+					setLoading(false);
 				}
 			};
 			getMovies();
@@ -27,13 +32,15 @@ const MoviesSearchPage = () => {
 		const handleSubmit = e => {
 			e.preventDefault();
 			const searchQuery = e.currentTarget.elements.input.value;
-			console.log('searchQuery :>> ', searchQuery);
+			// console.log('searchQuery :>> ', searchQuery);
 			setSearchParams({ movie: searchQuery });
 			e.target.reset();
 		};
 
 	return (
 		<div>
+			{loading && <p>...Loading</p>}
+			{error && <p>{error}</p>}
 			<h1>Search</h1>
 			<SearchBox onSubmit={handleSubmit} />
 			<TrendingMovieList movies={movies} />
