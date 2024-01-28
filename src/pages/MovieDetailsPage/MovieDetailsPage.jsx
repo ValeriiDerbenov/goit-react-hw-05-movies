@@ -1,6 +1,6 @@
 import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate, Outlet } from "react-router-dom";
+import { Link, useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 
 const MovieDetailsPage = () => {
 	const {id} = useParams();
@@ -8,6 +8,8 @@ const MovieDetailsPage = () => {
 	const [genres, setGenres] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const location = useLocation();
+	// const backLinkLocation = useRef(location.state?.from ?? '/movies');
 
 	const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ const MovieDetailsPage = () => {
 		<div>
 			{loading && <p>...Loading</p>}
 			{error && <p>{error}</p>}
-			<button onClick={() => navigate(-1)} type="button">Go back</button>
+			<button onClick={() => navigate(location.state?.from ?? '/')} type="button">Go back</button>
 			<div>
           <img src={
               movieDetails.poster_path
@@ -61,8 +63,8 @@ const MovieDetailsPage = () => {
       </ul>
 			<h3>Additional information</h3>
 			<ul>
-				<li><Link to="cast">Cast</Link></li>
-				<li><Link to="reviews">Reviews</Link></li>
+				<li><Link to="cast" state={{ from: location.state?.from ?? '/' }}>Cast</Link></li>
+				<li><Link to="reviews" state={{ from: location.state?.from ?? '/' }}>Reviews</Link></li>
 				<Outlet />
 			</ul>
 		</div>
