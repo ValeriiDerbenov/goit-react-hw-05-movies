@@ -9,7 +9,7 @@ const MovieDetailsPage = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const location = useLocation();
-	const backLinkLocation = useRef(location.state?.from ?? '/movies');
+	const backLinkLocation = useRef(location.state?.from ?? '/');
 
 	const navigate = useNavigate();
 
