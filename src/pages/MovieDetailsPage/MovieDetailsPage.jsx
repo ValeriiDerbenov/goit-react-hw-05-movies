@@ -43,7 +43,8 @@ const MovieDetailsPage = () => {
             alt={movieDetails.title}
             width="280"
           />
-        </div> 
+         
+			<div>
 			{error && <p>Error: {error}</p>}
 			{movieDetails && (
 				<h1>{movieDetails.title}</h1>
@@ -59,6 +60,9 @@ const MovieDetailsPage = () => {
           <li key={id}>{name}</li>
           ))}
       </ul>
+			</div>
+
+			</div>
 			<h3>Additional information</h3>
 			<ul>
 				<li><Link to="cast" 
