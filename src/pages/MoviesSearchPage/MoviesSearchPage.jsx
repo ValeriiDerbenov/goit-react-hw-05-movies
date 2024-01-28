@@ -9,11 +9,13 @@ import { fetchSearchMovies } from "components/api/Api";
 const MoviesSearchPage = () => {
 
 		const [searchParams, setSearchParams] = useSearchParams();
-		const movieName = searchParams.get('movie') ?? '';
+		const movieName = searchParams.get('movie');
 		const [movies, setMovies] = useState([]);
 		const [loading, setLoading] = useState([]);
 		const [error, setError] = useState([]);
+
 		// console.log('movieName :>> ', movieName);
+		console.log('movies :>> ', movies);
 	
 		useEffect(() => {
 			const getMovies = async () => {
@@ -26,15 +28,18 @@ const MoviesSearchPage = () => {
 					setLoading(false);
 				}
 			};
+			if(movieName) {
 			getMovies();
+			}
 		}, [movieName]);
 	
-		const handleSubmit = e => {
-			e.preventDefault();
-			const searchQuery = e.currentTarget.elements.input.value;
-			// console.log('searchQuery :>> ', searchQuery);
+		const handleSubmit = event => {
+			event.preventDefault();
+			const searchQuery = event.currentTarget.elements.input.value;
+			console.log('searchQuery :>> ', searchQuery);
+			console.log('movieName :>> ', movieName);
 			setSearchParams({ movie: searchQuery });
-			e.target.reset();
+			event.target.reset();
 		};
 
 	return (
