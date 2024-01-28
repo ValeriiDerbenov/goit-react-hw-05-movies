@@ -1,5 +1,5 @@
 import { fetchMovieDetails } from "components/api/Api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
 
 const MovieDetailsPage = () => {
@@ -9,7 +9,7 @@ const MovieDetailsPage = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const location = useLocation();
-	// const backLinkLocation = useRef(location.state?.from ?? '/movies');
+	const backLinkLocation = useRef(location.state?.from ?? '/movies');
 
 	const navigate = useNavigate();
 
@@ -20,11 +20,9 @@ const MovieDetailsPage = () => {
 				const movieDetails = await fetchMovieDetails(id);
 				setMovieDetails(movieDetails);
 				setGenres(movieDetails.genres);
-			}
-			catch (error) {
+			}	catch (error) {
 				setError(error);
-			}
-			finally {
+			}	finally {
 				setLoading(false);
 			}
 		}
@@ -35,7 +33,7 @@ const MovieDetailsPage = () => {
 		<div>
 			{loading && <p>...Loading</p>}
 			{error && <p>{error}</p>}
-			<button onClick={() => navigate(location.state?.from ?? '/')} type="button">Go back</button>
+			<button onClick={() => navigate(backLinkLocation.current)} type="button">Go back</button>
 			<div>
           <img src={
               movieDetails.poster_path

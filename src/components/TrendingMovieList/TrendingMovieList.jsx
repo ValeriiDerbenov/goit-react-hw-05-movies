@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 
 const TrendingMovieList = ({movies}) => {
-	const setlocation = useLocation();
+	const location = useLocation();
 
 	return (
 		<ul>
@@ -10,7 +10,7 @@ const TrendingMovieList = ({movies}) => {
 					<Link
             to={{
               pathname: `/movies/${id}`,
-              state: { from: setlocation },
+              state: { from: location },
             }}
           >
             {title}
