@@ -15,7 +15,7 @@ const MoviesSearchPage = () => {
 		const [error, setError] = useState([]);
 
 		// console.log('movieName :>> ', movieName);
-		console.log('movies :>> ', movies);
+		// console.log('movies :>> ', movies);
 	
 		useEffect(() => {
 			const getMovies = async () => {
@@ -36,8 +36,8 @@ const MoviesSearchPage = () => {
 		const handleSubmit = event => {
 			event.preventDefault();
 			const searchQuery = event.currentTarget.elements.input.value;
-			console.log('searchQuery :>> ', searchQuery);
-			console.log('movieName :>> ', movieName);
+			// console.log('searchQuery :>> ', searchQuery);
+			// console.log('movieName :>> ', movieName);
 			setSearchParams({ movie: searchQuery });
 			event.target.reset();
 		};

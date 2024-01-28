@@ -1,6 +1,7 @@
 import { fetchMovieDetails } from "components/api/Api";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate, Outlet, useLocation } from "react-router-dom";
+import styles from "./details-page.module.css"
 
 const MovieDetailsPage = () => {
 	const {id} = useParams();
@@ -38,7 +39,7 @@ const MovieDetailsPage = () => {
 			{loading && <p>...Loading</p>}
 			{error && <p>{error}</p>}
 			<button onClick={goBack} type="button">Go back</button>
-			<div>
+			<div className={styles.details}>
           <img src={
               movieDetails.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
