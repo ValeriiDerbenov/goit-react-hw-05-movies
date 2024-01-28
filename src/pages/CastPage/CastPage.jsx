@@ -33,19 +33,19 @@ const Cast = () => {
 		{error && <p>{error}</p>}
 		<h2>Cast</h2>
 		<ul>
-			{cast.map(actor => (
-				<li key={actor.id}>
+			{cast.map(({id, name, character, profile_path}) => (
+				<li key={id}>
 					<img
 						src={
-							actor.profile_path
-								? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+							profile_path
+								? `https://image.tmdb.org/t/p/w500${profile_path}`
 								: `https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled-1150x647.png`
 						}
-						alt={actor.name}
+						alt={name}
 						width="150"
 					/>
-					<p>{actor.name}</p>
-					<p>Character: {actor.character}</p>
+					<p>{name}</p>
+					<p>Character: {character}</p>
 				</li>
 			))}
 		</ul>
